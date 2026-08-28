@@ -4600,7 +4600,7 @@ const GOOGLE_LIVE_CATEGORIES = [
   {cat:'mall', query:'shopping malls'}, {cat:'sports', query:'sports and recreation'}
 ];
 
-async function searchCategoryGoogle(cat, query, center){
+  if(BACKEND_BASE_URL){     try{       const res = await fetch(`${BACKEND_BASE_URL}/google-search`, {         method:'POST', headers:{'Content-Type':'application/json'},         body: JSON.stringify({cat, query, lat: center.lat, lng: center.lng, radius: 8000})       });       if(res.ok) return await res.json();       const errBody = await res.text().catch(()=> '(no body)');       console.error(`[Boussole] google-search backend returned ${res.status} for "${cat}":`, errBody);     }catch(e){ console.error(`[Boussole] google-search backend request failed for "${cat}":`, e); }   }
   // Backend path: your own key stays server-side, and results for a given city/category are
   // cached there — this is what keeps costs from multiplying by every visitor. Falls back to
   // the visitor's own pasted key (the original behavior) if no backend is configured, or if
