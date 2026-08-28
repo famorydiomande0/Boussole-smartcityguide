@@ -4216,7 +4216,7 @@ let liveOrigin = null; // {lat,lng} of the last live search — used as the rout
 // same public rate limit. Leave empty (current default) until the backend is deployed and
 // confirmed working — pointing this at a URL that doesn't exist yet would break every live
 // search, so flip it to '/.netlify/functions' only after that.
-const BACKEND_BASE_URL = '';
+const BACKEND_BASE_URL = '/.netlify/functions';
 
 /* ===================== Revenue config =====================
    These only DO anything once you've been approved for the affiliate programs below and
